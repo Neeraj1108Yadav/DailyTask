@@ -1,8 +1,8 @@
-import com.nano.dailytask.model.Product
+import com.nano.dailytask.model.CosmeticModel
 
 data class Fashion(
     val total:Int,
     val skip:Int,
     val limit:Int,
-    val products: List<Product>
+    val products: List<CosmeticModel>
 )

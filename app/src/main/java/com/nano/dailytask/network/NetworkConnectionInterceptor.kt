@@ -9,14 +9,14 @@ import okhttp3.Response
 import kotlin.jvm.Throws
 
 /**
- * Created By Neeraj Yadav on 13/09/24
+ * Created By Neeraj Yadav on 14/09/24
  */
-class NetworkInterceptor(private val context: Context) : Interceptor{
+class NetworkConnectionInterceptor(private val context: Context) : Interceptor {
 
-    @Throws(NetworkConnectivityException::class)
+    @Throws(NetworkConnectionException::class)
     override fun intercept(chain: Interceptor.Chain): Response {
         if(!isNetworkConnectionAvailable()){
-            throw NetworkConnectivityException("No Internet Connection")
+            throw NetworkConnectionException("no Internet Connection")
         }
 
         val request = chain.request()

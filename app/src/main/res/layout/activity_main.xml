@@ -38,4 +38,14 @@
         android:layout_marginTop="10dp"
         android:text="Products-Review"/>
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnAllProducts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnProductsReview"
+        android:layout_marginTop="10dp"
+        android:text="Products-Room"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

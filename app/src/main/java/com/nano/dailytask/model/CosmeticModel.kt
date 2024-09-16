@@ -1,12 +1,9 @@
 package com.nano.dailytask.model
 
-import androidx.room.Embedded
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-
-@Entity
-data class Product(
-    @PrimaryKey
+/**
+ * Created By Neeraj Yadav on 16/09/24
+ */
+data class CosmeticModel(
     val id: Int,
     val availabilityStatus: String,
     var brand: String? = null,
@@ -24,5 +21,7 @@ data class Product(
     val thumbnail: String,
     val title: String,
     val warrantyInformation: String,
-    val weight: Int
+    val weight: Int,
+    val dimensions:DimensionsTable,
+    val reviews:List<ReviewTable>
 )
