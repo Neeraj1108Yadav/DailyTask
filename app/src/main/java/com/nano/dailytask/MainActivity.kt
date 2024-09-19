@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var btnProducts: AppCompatButton
     private lateinit var btnProductsDimension: AppCompatButton
     private lateinit var btnProductsReview: AppCompatButton
+    private lateinit var btnAllProducts: AppCompatButton
 
     private val productViewModel:CosmeticViewModel by viewModels<CosmeticViewModel>()
 
@@ -39,6 +40,7 @@ class MainActivity : AppCompatActivity() {
         btnProducts = findViewById(R.id.btnProducts)
         btnProductsDimension = findViewById(R.id.btnProductsDimension)
         btnProductsReview = findViewById(R.id.btnProductsReview)
+        btnAllProducts = findViewById(R.id.btnAllProducts)
     }
 
     private fun initListener(){
@@ -47,11 +49,15 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnProductsDimension.setOnClickListener {
-
+           productViewModel.getAllDimensionsFromRoom()
         }
 
         btnProductsReview.setOnClickListener {
+            productViewModel.getAllReviewFromRoom()
+        }
 
+        btnAllProducts.setOnClickListener {
+            productViewModel.getAllProductFromRoom()
         }
     }
 }

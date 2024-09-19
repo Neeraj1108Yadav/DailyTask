@@ -14,4 +14,16 @@ class CosmeticViewModel @Inject constructor(private val productRepo:ProductRepo)
     fun getAllProducts(){
         productRepo.getAllProduct()
     }
+
+    fun getAllProductFromRoom(){
+        productRepo.getAllProductFromRoom()
+    }
+
+    fun getAllReviewFromRoom(){
+        productRepo.getAllProductWithReviewFromRoom()
+    }
+
+    fun getAllDimensionsFromRoom(){
+        productRepo.getAllProductWithDimensionFromRoom()
+    }
 }

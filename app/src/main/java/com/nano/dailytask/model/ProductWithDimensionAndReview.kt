@@ -4,11 +4,16 @@ import androidx.room.Embedded
 import androidx.room.Relation
 
 /**
- * Created By Neeraj Yadav on 13/09/24
+ * Created By Neeraj Yadav on 16/09/24
  */
-data class ProductWithDimension(
+data class ProductWithDimensionAndReview(
     @Embedded
     val product: Product,
+    @Relation(
+        parentColumn = "id",
+        entityColumn = "productId"
+    )
+    val reviewTable:List<ReviewTable>,
     @Relation(
         parentColumn = "id",
         entityColumn = "productId"

@@ -2,7 +2,8 @@ package com.nano.dailytask.di
 
 import android.content.Context
 import com.nano.dailytask.api.ApiService
-import com.nano.dailytask.network.NetworkInterceptor
+import com.nano.dailytask.constant.AppConstant
+import com.nano.dailytask.network.NetworkConnectionInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,18 +17,18 @@ import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 /**
- * Created By Neeraj Yadav on 13/09/24
- */
+* Created By Neeraj Yadav on 14/09/24
+*/
 
 @InstallIn(SingletonComponent::class)
 @Module
 class NetworkModule {
 
-    private val BASE_URL = "https://dummyjson.com/".toHttpUrl()
+    private val BASE_URL = AppConstant.BASE_URL.toHttpUrl()
 
     @Singleton
     @Provides
-    fun provideRetrofitBuilder():Retrofit.Builder{
+    fun provideRetrofit():Retrofit.Builder{
         return Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
             .baseUrl(BASE_URL)
@@ -35,22 +36,19 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun provideApiService(
-        retrofitBuilder:Retrofit.Builder,
-        httpClient: OkHttpClient.Builder
-    ) : ApiService{
-        return retrofitBuilder.client(httpClient.build()).build().create(ApiService::class.java)
+    fun provideOkHttp(loggingInterceptor: HttpLoggingInterceptor,
+                      networkConnectionInterceptor: NetworkConnectionInterceptor):OkHttpClient.Builder{
+        val okHttpClient = OkHttpClient.Builder()
+        okHttpClient.addNetworkInterceptor(networkConnectionInterceptor)
+            .addInterceptor(loggingInterceptor)
+        return okHttpClient
     }
 
     @Singleton
     @Provides
-    fun provideOkHttpBuilder(
-        networkInterceptor: NetworkInterceptor,
-        loggingInterceptor: HttpLoggingInterceptor
-    ):OkHttpClient.Builder{
-        return OkHttpClient.Builder()
-            .addNetworkInterceptor(networkInterceptor)
-            .addNetworkInterceptor(loggingInterceptor)
+    fun provideApiService(okhttp:OkHttpClient.Builder,
+                          retrofit:Retrofit.Builder):ApiService{
+        return retrofit.client(okhttp.build()).build().create(ApiService::class.java)
     }
 
     @Singleton
@@ -63,7 +61,7 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun provideNetworkConnectionInterceptor(@ApplicationContext context: Context):NetworkInterceptor{
-        return NetworkInterceptor(context)
+    fun getNetworkConnectionInterceptor(@ApplicationContext context: Context):NetworkConnectionInterceptor{
+        return NetworkConnectionInterceptor(context)
     }
 }
