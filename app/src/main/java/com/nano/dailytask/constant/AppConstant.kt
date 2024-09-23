@@ -5,5 +5,6 @@ package com.nano.dailytask.constant
  */
 object AppConstant {
 
+    const val TAG = "products"
     const val BASE_URL = "https://dummyjson.com/"
 }

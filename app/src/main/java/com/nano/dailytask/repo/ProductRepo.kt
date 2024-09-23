@@ -62,7 +62,7 @@ class ProductRepo @Inject constructor(private val productDao: ProductDao,
             weight = cosmeticModel.weight
         )
 
-        productDao.insertProducts(product)
+        productDao.insertProduct(product)
     }
 
     private fun insertDimensions(cosmeticModel:CosmeticProducts){
@@ -73,7 +73,7 @@ class ProductRepo @Inject constructor(private val productDao: ProductDao,
             width = cosmeticModel.dimensions.width
         )
 
-        productDao.insertDimensions(dimension)
+        productDao.insertDimension(dimension)
     }
 
     private fun insertReviews(cosmeticModel:CosmeticProducts){
@@ -88,7 +88,7 @@ class ProductRepo @Inject constructor(private val productDao: ProductDao,
                 date = it.date
             )
 
-            productDao.insertReviews(review)
+            productDao.insertReview(review)
         }
     }
 

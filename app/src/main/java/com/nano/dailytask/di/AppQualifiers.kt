@@ -6,7 +6,7 @@ import javax.inject.Qualifier
  * Created By Neeraj Yadav on 23/09/24
  */
 
-@Qualifier
+/*@Qualifier
 @Retention(AnnotationRetention.BINARY)
 annotation class QualifierLocalRepo
 
@@ -16,4 +16,4 @@ annotation class QualifierNetworkRepo
 
 @Qualifier
 @Retention(AnnotationRetention.BINARY)
-annotation class QualifierProductRepo
+annotation class QualifierProductRepo*/

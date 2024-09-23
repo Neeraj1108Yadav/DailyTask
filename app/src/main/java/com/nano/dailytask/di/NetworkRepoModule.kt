@@ -1,11 +1,12 @@
 package com.nano.dailytask.di
 
-import com.nano.dailytask.listener.FetchProductListener
+import com.nano.dailytask.listener.NetworkFetchProductListener
 import com.nano.dailytask.repo.NetworkProductRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
 
 /**
  * Created By Neeraj Yadav on 17/09/24
@@ -14,9 +15,9 @@ import dagger.hilt.components.SingletonComponent
 @InstallIn(SingletonComponent::class)
 abstract class NetworkRepoModule{
 
-    @QualifierNetworkRepo
+    @Singleton
     @Binds
     abstract fun bindProductRepository(
         networkProductRepository: NetworkProductRepository
-    ) : FetchProductListener
+    ) : NetworkFetchProductListener
 }
