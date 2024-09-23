@@ -3,7 +3,7 @@ package com.nano.dailytask.model
 /**
  * Created By Neeraj Yadav on 16/09/24
  */
-data class CosmeticModel(
+data class CosmeticProducts(
     val id: Int,
     val availabilityStatus: String,
     var brand: String? = null,

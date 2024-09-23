@@ -21,9 +21,7 @@ class DatabaseModule {
 
     @Provides
     fun providedProductDatabase(@ApplicationContext context: Context):ProductDatabase{
-        return Room.databaseBuilder(context,ProductDatabase::class.java,"cosmetics_db")
-            .allowMainThreadQueries()
-            .build()
+        return Room.databaseBuilder(context,ProductDatabase::class.java,"cosmetics_db").build()
     }
 
     @Provides

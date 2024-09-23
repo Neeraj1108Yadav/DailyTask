@@ -19,13 +19,22 @@ import com.nano.dailytask.model.ReviewTable
 interface ProductDao {
 
     @Insert
-    fun insertProducts(product: Product)
+    fun insertProducts(product: List<Product>)
 
     @Insert
-    fun insertDimensions(dimensionsTable: DimensionsTable)
+    fun insertDimensions(dimensionsTable: List<DimensionsTable>)
 
     @Insert
-    fun insertReviews(reviewTable: ReviewTable)
+    fun insertReviews(reviewTable: List<ReviewTable>)
+
+    @Insert
+    fun insertProduct(product: Product)
+
+    @Insert
+    fun insertDimension(dimensionsTable: DimensionsTable)
+
+    @Insert
+    fun insertReview(reviewTable: ReviewTable)
 
     @Query("SELECT * FROM Product")
     fun getAllProducts() : List<Product>
