@@ -4,7 +4,7 @@ import Fashion
 import android.util.Log
 import com.nano.dailytask.api.ApiService
 import com.nano.dailytask.db.ProductDao
-import com.nano.dailytask.model.CosmeticModel
+import com.nano.dailytask.model.CosmeticProducts
 import com.nano.dailytask.model.DimensionsTable
 import com.nano.dailytask.model.Product
 import com.nano.dailytask.model.ReviewTable
@@ -40,7 +40,7 @@ class ProductRepo @Inject constructor(private val productDao: ProductDao,
        })
     }
 
-    private fun insertProduct(cosmeticModel:CosmeticModel){
+    private fun insertProduct(cosmeticModel:CosmeticProducts){
         val product = Product(
             id = cosmeticModel.id,
             availabilityStatus = cosmeticModel.availabilityStatus,
@@ -65,7 +65,7 @@ class ProductRepo @Inject constructor(private val productDao: ProductDao,
         productDao.insertProducts(product)
     }
 
-    private fun insertDimensions(cosmeticModel:CosmeticModel){
+    private fun insertDimensions(cosmeticModel:CosmeticProducts){
         val dimension = DimensionsTable(
             productId = cosmeticModel.id.toString(),
             depth = cosmeticModel.dimensions.depth,
@@ -76,7 +76,7 @@ class ProductRepo @Inject constructor(private val productDao: ProductDao,
         productDao.insertDimensions(dimension)
     }
 
-    private fun insertReviews(cosmeticModel:CosmeticModel){
+    private fun insertReviews(cosmeticModel:CosmeticProducts){
 
         cosmeticModel.reviews.forEach {
             val review = ReviewTable(
