@@ -53,7 +53,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
-    testImplementation(libs.junit)
+
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
@@ -74,6 +74,7 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:$retrofit_version")
     implementation("com.squareup.retrofit2:converter-gson:$retrofit_version")
     implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
+    implementation("com.squareup.retrofit2:converter-moshi:2.11.0")
 
     //Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0")
@@ -94,14 +95,24 @@ dependencies {
     //Test Hilt
     // For Robolectric tests.
     testImplementation("com.google.dagger:hilt-android-testing:2.51.1")
-    // ...with Kotlin.
     kaptTest("com.google.dagger:hilt-android-compiler:2.51.1")
+
     // For instrumented tests.
     androidTestImplementation("com.google.dagger:hilt-android-testing:2.51.1")
-    // ...with Kotlin.
     kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.51.1")
 
+    //Test Retrofit
+    testImplementation("com.squareup.okhttp3:mockwebserver:4.12.0")
+    implementation("org.mockito:mockito-core:5.13.0")
 
+    //Test Coroutines
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.9.0")
+
+    //For JUnit Test
+    testImplementation(libs.junit)
+    testImplementation(libs.androidx.junit)
+    testImplementation("org.robolectric:robolectric:4.13")
+    androidTestImplementation(libs.androidx.runner)
 }
 
 // Allow references to generated code
