@@ -48,4 +48,44 @@
         android:layout_marginTop="10dp"
         android:text="Products-Room"/>
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnDeleteDimension"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnAllProducts"
+        android:layout_marginTop="10dp"
+        android:text="Delete Dimension"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnDeleteReviews"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnDeleteDimension"
+        android:layout_marginTop="10dp"
+        android:text="Delete Review"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnDeleteProduct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnDeleteReviews"
+        android:layout_marginTop="10dp"
+        android:text="Delete Product"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnDeleteProductRecord"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnDeleteProduct"
+        android:layout_marginTop="10dp"
+        android:text="Delete Product Review Dimension"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

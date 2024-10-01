@@ -4,6 +4,7 @@ import Fashion
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.nano.dailytask.listener.DeleteProductListener
 import com.nano.dailytask.listener.InsertProductListener
 import com.nano.dailytask.listener.NetworkProductCallback
 import com.nano.dailytask.repo.ProductRepository
@@ -20,7 +21,8 @@ import javax.inject.Inject
 @HiltViewModel
 class CosmeticViewModel @Inject constructor(
     private val productRepository: ProductRepository,
-    private val insertProductRepo : InsertProductListener
+    private val insertProductRepo : InsertProductListener,
+    private val deleteProductListener: DeleteProductListener
 ) : ViewModel(),NetworkProductCallback{
 
     fun getAllProducts(){
@@ -93,6 +95,30 @@ class CosmeticViewModel @Inject constructor(
     fun getAllDimensionsFromRoom(){
         viewModelScope.launch {
 
+        }
+    }
+
+    fun deleteProductWithId(id:Int){
+        viewModelScope.launch(Dispatchers.IO) {
+            deleteProductListener.deleteProduct(id)
+        }
+    }
+
+    fun deleteReviewWithId(id:Int){
+        viewModelScope.launch(Dispatchers.IO) {
+            deleteProductListener.deleteReview(id)
+        }
+    }
+
+    fun deleteDimensionWithId(id:Int){
+        viewModelScope.launch(Dispatchers.IO) {
+            deleteProductListener.deleteDimension(id)
+        }
+    }
+
+    fun deleteProductAll(id:Int){
+        viewModelScope.launch(Dispatchers.IO) {
+            deleteProductListener.deleteProductReviewDimension(id)
         }
     }
 }

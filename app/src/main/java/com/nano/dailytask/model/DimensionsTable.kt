@@ -9,7 +9,8 @@ import androidx.room.PrimaryKey
         ForeignKey(
             entity = Product::class,
             parentColumns = arrayOf("id"),
-            childColumns = arrayOf("productId")
+            childColumns = arrayOf("productId"),
+            onDelete = ForeignKey.CASCADE
         )
     ]
 )

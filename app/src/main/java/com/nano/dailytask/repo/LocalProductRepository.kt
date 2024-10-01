@@ -7,6 +7,8 @@ import com.nano.dailytask.model.ProductWithDimension
 import com.nano.dailytask.model.ProductWithDimensionAndReview
 import com.nano.dailytask.model.ProductWithReviews
 import com.nano.dailytask.model.ReviewTable
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 /**
@@ -17,7 +19,9 @@ class LocalProductRepository @Inject constructor(
 ) : LocalFetchProductListener {
 
     override suspend fun getProducts(): List<Product> {
-       return productDao.getAllProducts()
+       return withContext(Dispatchers.IO){
+           productDao.getAllProducts()
+       }
     }
 
     override suspend fun getProductById(id: Int): List<Product> {

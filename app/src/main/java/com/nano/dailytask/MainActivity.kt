@@ -19,6 +19,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var btnProductsDimension: AppCompatButton
     private lateinit var btnProductsReview: AppCompatButton
     private lateinit var btnAllProducts: AppCompatButton
+    private lateinit var btnDeleteDimension: AppCompatButton
+    private lateinit var btnDeleteReviews: AppCompatButton
+    private lateinit var btnDeleteProduct: AppCompatButton
+    private lateinit var btnDeleteProductRecord: AppCompatButton
 
     private val productViewModel:CosmeticViewModel by viewModels<CosmeticViewModel>()
 
@@ -41,6 +45,10 @@ class MainActivity : AppCompatActivity() {
         btnProductsDimension = findViewById(R.id.btnProductsDimension)
         btnProductsReview = findViewById(R.id.btnProductsReview)
         btnAllProducts = findViewById(R.id.btnAllProducts)
+        btnDeleteDimension = findViewById(R.id.btnDeleteDimension)
+        btnDeleteReviews = findViewById(R.id.btnDeleteReviews)
+        btnDeleteProduct = findViewById(R.id.btnDeleteProduct)
+        btnDeleteProductRecord = findViewById(R.id.btnDeleteProductRecord)
     }
 
     private fun initListener(){
@@ -58,6 +66,22 @@ class MainActivity : AppCompatActivity() {
 
         btnAllProducts.setOnClickListener {
             productViewModel.getAllProductFromRoom()
+        }
+
+        btnDeleteProduct.setOnClickListener {
+            productViewModel.deleteProductWithId(2)
+        }
+
+        btnDeleteReviews.setOnClickListener {
+            productViewModel.deleteReviewWithId(3)
+        }
+
+        btnDeleteDimension.setOnClickListener {
+            productViewModel.deleteDimensionWithId(4)
+        }
+
+        btnDeleteProductRecord.setOnClickListener {
+            productViewModel.deleteProductAll(5)
         }
     }
 }
